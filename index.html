@@ -359,15 +359,34 @@
   <script src="assets/vendor/jquery/jquery.min.js"></script>
   <script>
     function h() {
-      var txt;
-      var person = prompt("Message:");
-      if (person == null || person == "") {
-        txt = "User cancelled the prompt.";
-      } else {
-        alert("Thank you");
+      
+      var iname = prompt("Company name:");
+      var imsg = prompt("Message:");
+      if(iname == null || iname == ""){
+        
+
       }
-      document.getElementById("demo").innerHTML = txt;
-    }
+      else if(confirm){
+        alert(imsg);
+        firebase.database.ref("Notification"+iname).set({
+         Name:iname,
+         msg:imsg    
+        });
+
+      }
+        
+       
+
+   
+        
+
+      
+      
+}
+      
+      
+      
+    
     </script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
@@ -379,6 +398,29 @@
   <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
   <script src="assets/vendor/typed.js/typed.min.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
+
+  <!--Firebase-->
+
+    <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-database.js"></script> 
+
+    <script id="MainScript">
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyBeTcnm0aESYXVmhnYcCXlPmQtudl8DsgU",
+        authDomain: "myportfolionotification.firebaseapp.com",
+        databaseURL: "https://myportfolionotification-default-rtdb.firebaseio.com",
+        projectId: "myportfolionotification",
+        storageBucket: "myportfolionotification.appspot.com",
+        messagingSenderId: "397787249242",
+        appId: "1:397787249242:web:d9d842e0cc0499192cb663"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
+
+  <!--Firebsae-->
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
