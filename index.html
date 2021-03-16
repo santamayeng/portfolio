@@ -368,7 +368,7 @@
       }
       else if(confirm){
         alert(imsg);
-        firebase.databaseURL.ref("Notification"+imsg).set({
+        firebase.database.ref("Notification"+imsg).set({
          Name:iname,
          msg:imsg    
         });
