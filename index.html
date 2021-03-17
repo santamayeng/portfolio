@@ -316,33 +316,87 @@
          </div>
          
         </div>  
-         <!--Copy-->
+         <!--Firebase-->
          <div id = "msg" class="msg col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-          <form class="php-email-form" id="contactForm">
-            <div class="row">
-              <div class="form-group col-md-6">
-                <label for="name">Company</label>
-                <input type="text" name="name" class="form-control" id="name" required>
-              </div>
-              <div class="form-group col-md-6">
-                <label for="name">Company Email</label>
-                <input type="email" class="form-control" name="email" id="email" required>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="name">Subject</label>
-              <input type="text" class="form-control" name="subject" id="subject" required>
-            </div>
-            <div class="form-group">
-              <label for="name">Message</label>
-              <textarea class="form-control" name="message" id="msg" rows="5" required></textarea>
-            </div>
-           
-            <div class="text-center"><button id="submit" type="submit">Submit</button></div>
-          </form>
+          <form class="container" id="contactForm"> 
+            <div class="card"> 
+              <div class="card-body"> 
+                <div class="form-group"> 
+                  <label for="exampleFormControlInput1"> 
+                    Enter Your Name 
+                  </label> 
+                  
+                  <input type="text" class="form-control"
+                  id="name" placeholder="Enter your name"> 
+                </div> 
+        
+                <div class="form-group"> 
+                  <label for="exampleFormControlInput1"> 
+                    Email address 
+                  </label> 
+                  
+                  <input type="email" class="form-control"
+                  id="email" placeholder="name@example.com"> 
+                </div> 
+              </div> 
+              <button type="submit" class="btn btn-primary"
+                style="margin-left: 15px; margin-top: 10px"> 
+                Submit 
+              </button> 
+            </div> 
+          </form> 
+        
+          <script src= 
+        "https://www.gstatic.com/firebasejs/3.7.4/firebase.js"> 
+          </script> 
+          
+          <script> 
+            var firebaseConfig = { 
+                    apiKey: "AIzaSyBeTcnm0aESYXVmhnYcCXlPmQtudl8DsgU",
+                    authDomain: "myportfolionotification.firebaseapp.com",
+                    databaseURL: "https://myportfolionotification-default-rtdb.firebaseio.com",
+                    projectId: "myportfolionotification",
+                    storageBucket: "myportfolionotification.appspot.com",
+                    messagingSenderId: "397787249242",
+                    appId: "1:397787249242:web:d9d842e0cc0499192cb663"
+                        }; 
+        
+            firebase.initializeApp(firebaseConfig); 
+        
+            var messagesRef = firebase.database() 
+              .ref('Collected Data'); 
+            
+            document.getElementById('contactForm') 
+              .addEventListener('submit', submitForm); 
+        
+            function submitForm(e) { 
+              e.preventDefault(); 
+        
+              // Get values 
+              var name = getInputVal('name'); 
+              var email = getInputVal('email'); 
+        
+              saveMessage(name, email); 
+              document.getElementById('contactForm').reset(); 
+            } 
+        
+            // Function to get get form values 
+            function getInputVal(id) { 
+              return document.getElementById(id).value; 
+            } 
+        
+            // Save message to firebase 
+            function saveMessage(name, email) { 
+              var newMessageRef = messagesRef.push(); 
+              newMessageRef.set({ 
+                name: name, 
+                email: email, 
+              }); 
+            } 
+          </script> 
         </div>
 
-          <!--Copy-->
+          <!--Firebase-->
 
         
       </div>
@@ -390,67 +444,13 @@
 
   <!--Firebase-->
 
-    <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-database.js"></script> 
-
-    <script id="MainScript">
-      // Your web app's Firebase configuration
-      var firebaseConfig = {
-    apiKey: "AIzaSyBeTcnm0aESYXVmhnYcCXlPmQtudl8DsgU",
-    authDomain: "myportfolionotification.firebaseapp.com",
-    databaseURL: "https://myportfolionotification-default-rtdb.firebaseio.com",
-    projectId: "myportfolionotification",
-    storageBucket: "myportfolionotification.appspot.com",
-    messagingSenderId: "397787249242",
-    appId: "1:397787249242:web:d9d842e0cc0499192cb663"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-
-  var messagesRef = firebase.database() 
-			.ref('Notification');
-
-      document.getElementById('contactForm') 
-			.addEventListener('submit', submitForm); 
-
-      function submitForm(e) { 
-			e.preventDefault(); 
-
-			// Get values 
-			var name = getInputVal('name'); 
-			var email = getInputVal('email'); 
-      var sub = getInputVal('subject');
-      var msg = getInputVal('msg');
-
-			saveMessage(name, email,sub,msg); 
-			document.getElementById('contactForm').reset(); 
-		} 
-       
-    function getInputVal(id) { 
-			return document.getElementById(id).value; 
-		} 
-
-    function saveMessage(name, email, sub, msg) { 
-			var newMessageRef = messagesRef.push(); 
-			newMessageRef.set({ 
-				name: name, 
-				email: email, 
-        subject:sub,
-        msg:msg
-			}); 
-		} 
-
     
-    </script>
 
-  <!--Firebsae-->
+  
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script> 
-  <script src= "https://www.gstatic.com/firebasejs/3.7.4/firebase.js"> 
-	</script> 
+ 
 
 </body>
 
