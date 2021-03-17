@@ -320,15 +320,14 @@
          <div id = "msg" class="msg col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
           <form class="container" id="contactForm"> 
             <div class="card"> 
-              <div class="card-body">
-
+              <div class="card-body"> 
                 <div class="form-group"> 
                   <label for="exampleFormControlInput1"> 
                     Company Name:
                   </label> 
                   
                   <input type="text" class="form-control"
-                  id="name" placeholder="company name"> 
+                  id="name" placeholder="company"> 
                 </div> 
         
                 <div class="form-group"> 
@@ -339,16 +338,6 @@
                   <input type="email" class="form-control"
                   id="email" placeholder="name@example.com"> 
                 </div> 
-
-                <div class="form-group"> 
-                  <label for="exampleFormControlInput1"> 
-                    Message:
-                  </label> 
-                  
-                  <input type="msg" class="form-control"
-                  id="email" placeholder="name@example.com"> 
-                </div> 
-
               </div> 
               <button type="submit" class="btn btn-primary"
                 style="margin-left: 15px; margin-top: 10px"> 
@@ -375,7 +364,7 @@
             firebase.initializeApp(firebaseConfig); 
         
             var messagesRef = firebase.database() 
-              .ref('Notification'); 
+              .ref('Collected Data'); 
             
             document.getElementById('contactForm') 
               .addEventListener('submit', submitForm); 
@@ -386,9 +375,8 @@
               // Get values 
               var name = getInputVal('name'); 
               var email = getInputVal('email'); 
-              var msg = getInputVal('msg'); 
         
-              saveMessage(name, email,msg); 
+              saveMessage(name, email); 
               document.getElementById('contactForm').reset(); 
             } 
         
@@ -398,12 +386,11 @@
             } 
         
             // Save message to firebase 
-            function saveMessage(name, email, msg) { 
+            function saveMessage(name, email) { 
               var newMessageRef = messagesRef.push(); 
               newMessageRef.set({ 
                 name: name, 
-                email: email,
-                msg:msg 
+                email: email, 
               }); 
             } 
           </script> 
