@@ -280,7 +280,7 @@
           </div>
           <div class="col-md-8">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
+              <h5 class="card-title">Card</h5>
               <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
               <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             </div>
@@ -327,25 +327,39 @@
             <p>+91 9501179924, +91 8787526332</p>
           </div>
          </div>
-          <!--Copy-->
-         <div class="flex-column d-flex align-items-stretch">
-          <div class="info">
-
-            <h1>Message</h1>
-
-            <form>
-              <label for="fname">Company Name:</label><br>
-              <input type="text" id="fname" name="fname"><br>
-
-              <label for="lname">Message:</label><br>
-              <textarea rows="3" cols="50"></textarea>
-            </form>
-            <button class="btn btn-primary  " >Submit</button>
-            
-           </div>
-
-            <!--Copy-->
+         
         </div>  
+         <!--Copy-->
+         <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+          <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label for="name">Company</label>
+                <input type="text" name="name" class="form-control" id="name" required>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="name">Company Email</label>
+                <input type="email" class="form-control" name="email" id="email" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="name">Subject</label>
+              <input type="text" class="form-control" name="subject" id="subject" required>
+            </div>
+            <div class="form-group">
+              <label for="name">Message</label>
+              <textarea class="form-control" name="message" rows="10" required></textarea>
+            </div>
+            <div class="my-3">
+              <div class="loading">Loading</div>
+              <div class="error-message"></div>
+              <div class="sent-message">Your message has been sent. Thank you!</div>
+            </div>
+            <div class="text-center"><button type="submit">Send Message</button></div>
+          </form>
+        </div>
+
+          <!--Copy-->
 
         
       </div>
