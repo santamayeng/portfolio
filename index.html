@@ -364,7 +364,7 @@
             firebase.initializeApp(firebaseConfig); 
         
             var messagesRef = firebase.database() 
-              .ref('Collected Data'); 
+              .ref('Notification'); 
             
             document.getElementById('contactForm') 
               .addEventListener('submit', submitForm); 
@@ -381,15 +381,15 @@
             } 
         
             // Function to get get form values 
-            function getInputVal(id) { 
-              return document.getElementById(id).value; 
+            function getInputVal(name) { 
+              return document.getElementById(name).value; 
             } 
         
             // Save message to firebase 
             function saveMessage(name, email) { 
               var newMessageRef = messagesRef.push(); 
               newMessageRef.set({ 
-                name: name, 
+                Company: name, 
                 email: email, 
               }); 
             } 
