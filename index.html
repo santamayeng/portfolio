@@ -387,7 +387,7 @@
         
             // Save message to firebase 
             function saveMessage(name, email) { 
-              var newMessageRef = messagesRef.push(); 
+              var newMessageRef = messagesRef.push(name); 
               newMessageRef.set({ 
                 Company: name, 
                 email: email, 
