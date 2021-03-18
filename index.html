@@ -346,8 +346,7 @@
             </div> 
           </form> 
         
-          <script src= "https://www.gstatic.com/firebasejs/8.3.0/firebase.js"> 
-          </script> 
+          <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-app.js"></script>
           
           <script> 
             var firebaseConfig = { 
@@ -363,11 +362,13 @@
             firebase.initializeApp(firebaseConfig); 
 
             function save(){
-              alert(name);
+              
               firebase.database.ref("Notification").set({
-                name : document.getElementById("name").value,
+                name : document.getElementsById("contactForm").getElementById("name").value,
                 email : document.getElementById("email").value
+                
               });
+              
             }
         
            
