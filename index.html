@@ -339,15 +339,14 @@
                   id="email"> 
                 </div> 
               </div> 
-              <button type="submit" class="btn btn-primary"
+              <button type="submit" class="btn btn-primary" onclick="save()"
                 style="margin-left: 15px; margin-top: 10px"> 
                 Submit 
               </button> 
             </div> 
           </form> 
         
-          <script src= 
-        "https://www.gstatic.com/firebasejs/3.7.4/firebase.js"> 
+          <script src= "https://www.gstatic.com/firebasejs/3.7.4/firebase.js"> 
           </script> 
           
           <script> 
@@ -362,36 +361,15 @@
                         }; 
         
             firebase.initializeApp(firebaseConfig); 
+
+            function save(){
+              firebase.database.ref("Notification").set({
+                name : document.getElementById("name").value,
+                email : document.getElementById("email").value
+              });
+            }
         
-            var messagesRef = firebase.database() 
-              .ref('Notification'); 
-            
-            document.getElementById('contactForm') 
-              .addEventListener('submit', submitForm); 
-        
-            function submitForm(e) { 
-              e.preventDefault();
-        
-              // Get values 
-              var name = getInputVal('name'); 
-              var email = getInputVal('email'); 
-        
-              saveMessage(name, email); 
-              document.getElementById('contactForm').reset(); 
-            } 
-        
-            // Function to get get form values 
-            function getInputVal(name) { 
-              return document.getElementById(name).value; 
-            } 
-        
-            // Save message to firebase 
-            function saveMessage(name, email) { 
-              var newMessageRef = newMessageRef.set({ 
-                Company: name, 
-                email: email, 
-              }); 
-            } 
+           
           </script> 
         </div>
 
